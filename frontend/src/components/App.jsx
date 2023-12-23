@@ -1,19 +1,25 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import '/src/App.css'
 
 function App() {
-
+  const api = 'http://127.0.0.1:5000/'
+  useEffect(() => {
+    const getData = async() => {
+      const response = await fetch(api);
+      const jsonRes = await response.json();
+      console.log(jsonRes)
+    }
+    getData()
+  },[])
 
   return (
     <>
-     <BrowserRouter>
+     {/* <BrowserRouter>
      <Routes>
-      {/* <Route path='/' element={}></Route> */}
+      <Route path='/' element={}></Route>
      </Routes>
-     </BrowserRouter>
+     </BrowserRouter> */}
     </>
   )
 }
