@@ -4,7 +4,7 @@ import numpy as np
 
 
 pd.set_option('display.float_format', '{:.2f}'.format)
-all_data = pd.read_csv('/Users/bryan/Projects/finance-app/global-trends/backend/src/data/real_data.csv')
+all_data = pd.read_csv('/Users/bryan/Projects/finance-app/global-trends/backend/src/data/22291f87-6287-4213-a167-2a19414ef55a_Data.csv')
 
 
 del all_data['Series Code']
@@ -27,7 +27,7 @@ mask = all_data.isna()
 all_data[mask] = numeric_cols[mask]
 
 replacements = {
-    'GNI, Atlas method (current US$)': 'GNI',
+    'GNI per capita, Atlas method (current US$)': 'GNI',
     'GDP (current US$)': 'GDP',
     'Unemployment, total (% of total labor force) (national estimate)': 'Unemployment',
     'Inflation, consumer prices (annual %)': 'Inflation'
@@ -84,18 +84,17 @@ sa = all_data[all_data['Country Name'] == 'South Asia']
 del sa['Country Name']
 
 dataDict = {
-    'world': world,
-    'na': na,
-    'eca': eca,
-    'lac': lac,
-    'ssa': ssa,
-    'sa': sa,
-    'eap': eap,
-    'mena': mena
+    'World': world,
+    'North America': na,
+    'Europe & Central Asia': eca,
+    'Latin America & Caribbean': lac,
+    'Sub-Saharan Africa': ssa,
+    'South Asia': sa,
+    'East Asia & Pacific': eap,
+    'Middle East & North Africa': mena
 }
-
+# inflation_average = all_data.iloc[[3,7,11,15,18,22,26,30]].reset_index()
+# inflation_total= inflation_average.sum()
 json_data = {}
 for key,value in dataDict.items():
-    json_data[key] = value.to_dict(orient='records')
-
-ssa
+     json_data[key] = [dict(row, region=key) for row in value.to_dict(orient='records')]

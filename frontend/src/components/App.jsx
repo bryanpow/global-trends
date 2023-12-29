@@ -1,7 +1,8 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { useState, useEffect } from 'react'
-import '/src/App.css'
 import Dash from "./Dash"
+import { gni, gdp } from "./chartData"
+
 function App() {
   const api = 'http://127.0.0.1:5000/'
   useEffect(() => {
