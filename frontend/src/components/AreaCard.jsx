@@ -5,10 +5,10 @@ import { formatDataForChart, data, inflation } from './chartData';
 function AreaCard({number, title, stroke, fill, series}) {
     let arr = []
     formatDataForChart(arr, data, series)
-    const gradUrl =`${ Math.random() * 10000}`
+    
   return (
-    <div><div  style={{width: '270px', boxSizing: 'content-box'}} className='flex flex-col mt-10 p-5 justify-center cursor-pointer  mx-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10' >
-    <h1  style={{color: '#423D0F', fontSize: '30px', fontWeight: 'bold'}} >{number}</h1>
+    <div><div  style={{width: '270px', boxSizing: 'content-box'}} className='flex flex-col mt-1 p-5  justify-center cursor-pointer  mx-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10' >
+    <h1  style={{color: 'black', fontSize: '30px', fontWeight: 'bold'}} >{number}</h1>
     <h1 style={{fontSize: '15px', color: 'grey'}}>{title}</h1>
     <div className=' flex justify-center aspect-w-10 aspect-h-5 w-full '>
         <ResponsiveContainer width='95%'   className='m-auto' > 
