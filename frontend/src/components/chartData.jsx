@@ -149,3 +149,10 @@ export const formatForBar = (arr,series) => {
       }
   }
 
+export const formatForSort = (series) => {
+        let entries = Object.entries(series);
+        entries = entries.filter(pair => pair[0] !== 'World')
+        entries.sort((a,b) => b[1] - a[1]);
+        const sorted = entries.slice(0,3);
+        return sorted
+}

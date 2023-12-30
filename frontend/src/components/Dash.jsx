@@ -4,65 +4,38 @@ import { formatDataForChart, formatDataForPieChart, data, gni, gdp, inflation, u
 import InfoCard from './InfoCard';
 import AreaCard from './AreaCard';
 import BarCard from './BarCard';
-
+import PieCard from './PieCard';
+import Nav from './Nav';
+import { formatForSort } from './chartData';
+const test = formatForSort(inflationTotal);
+console.log(test)
 export function Dash({scatterStyle, barStyle, textStyle }) { 
   const pageTitle = 'North America' 
-  let data5 = []
-  formatDataForPieChart(data5,data,gni)
-  console.log(data5)
- 
-
-
- 
-
- 
-  
   return (
     <>
-    <h2 style={{marginLeft: '5%', fontSize: '30px'}}>{pageTitle}</h2>
+    {/* <h2 style={{marginLeft: '5%', fontSize: '30px'}}>{pageTitle}</h2> */}
     
-    <div className='flex gap-5  flex-wrap justify-center'>
+    <div className='flex gap-5 mt-5  flex-wrap justify-center'>
     <AreaCard series={gdp} number={`+${gdpTotal[`${pageTitle}`]}%`} title='GLOBAL DOMESTIC PROFIT' stroke='blue' fill='rgba(0, 0, 255, 1)'  />
     <AreaCard series={gni} number={`+${gniTotal[`${pageTitle}`]}%`} title='GROSS NATIONAL INCOME PER' stroke='yellow' fill='rgba(255, 255, 0, 1)' />
     <AreaCard series={unemployment} number={`${unemploymentTotal[`${pageTitle}`]}`} title='UNEMPLOYMENT' stroke='rgba(0, 255, 0, 1)' fill='rgba(0, 255, 0, 1)' />
     <AreaCard series={inflation} number={`+${inflationTotal[`${pageTitle}`]}%`} title='INFLATION (2002 - 2022)' stroke='rgba(255, 0, 0, 1)' fill='rgba(255, 0, 0, 1)' />
-    {/* rgba(128, 0, 128, 1) */}
     <BarCard />
-    <div  style={{width: '270px', hieght: '100px'}} className='flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10' >
-            <h1 className='text-center font-bold text-base'>PERCENT CHANGE</h1>
-            <PieChart width={400} height={300} style={{transform: 'scale(0.7) translateX(-117px)'}} > 
-                <defs>
-                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(0, 0, 255, 0.8)" stopOpacity={0.5}/>
-                    <stop offset="100%" stopColor="rgba(0, 0, 255, 0.8)" stopOpacity={0.9}/>
-                </linearGradient>
-                <linearGradient id="colorUv2" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(255, 0, 0, 1)" stopOpacity={0.5}/>
-                    <stop offset="100%" stopColor="rgba(255, 0, 0, 1)" stopOpacity={0.9}/>
-                </linearGradient>
-                </defs>
-                <Legend iconType='circle' wrapperStyle={{  transform: 'translateY(60px) translateX(5px)' }} />
-                <Pie
-                data={data5}
-                cx="50%"
-                cy="50%"
-                innerRadius={100}
-                outerRadius={135}
-                startAngle={-270}
-                endAngle={90}
-                
-                dataKey="North America"
-                >
-                {
-                    data5.map((entry, index) => <Cell key={`cell-${index}`}  fill={`url(#${index % 2 === 0 ? 'colorUv' : 'colorUv2'})`} />)
-                }
-                </Pie>
-                <text x={'50%'} y={'40%'} textAnchor="middle" dominantBaseline="middle" fill='grey'>2002-2012</text>
-                <text x={'50%'} y={'50%'} textAnchor="middle" dominantBaseline="middle" fill='grey'>VS</text>
-                <text x={'50%'} y={'60%'} textAnchor="middle" dominantBaseline="middle" fill='grey'>2012-2022</text>
-                <Tooltip />
-        </PieChart>
-    </div>
+    <PieCard />
+    <div  style={{width: '308px', hieght: '100px'}} className='flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10' >
+        <h1 style={{transform: 'translateY(-96px) translateX(10px)'}} className='text-base font-bold'>HIGHEST CHANGES (WORLD)</h1>
+        <div style={{transform: 'translateY(30px) translateX(-5px)'}}>
+        <div className='flex pl-2 pt-2 pb-2' style={{ transform: 'translateX(7px) translateY(-100px)', fontSize:'15px', gap:'68px', background: '#F4FAFF'}}><p>Region</p> <p></p> % Change</div>
+        {test.map((obj => {
+            return (
+                <div className='flex justify-between' style={{transform: 'translateY(-90px) translateX(8px)', borderBottom: '1px solid lightgrey',fontSize: '15px'}} ><p className='pl-2' style={{}}>{obj[0]}</p><p className='pr-3'> {obj[1]}</p></div>
+            )
+           
+        }))}
+        
+        </div>
+        
+        </div>
     </div>
     </>
 

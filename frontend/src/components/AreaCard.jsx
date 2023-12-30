@@ -24,7 +24,7 @@ function AreaCard({number, title, stroke, fill, series}) {
                 }
                 </linearGradient>
             </defs>
-                <XAxis interval={3}  angle={-60} tick={{ fontSize: '10px', overflow: 'visible', dy:10, fill: '#423D0F' }} axisLine={{ stroke: 'white' }}  dataKey="name" />
+                <XAxis interval={3}  angle={-60} tick={{ fontSize: '10px', overflow: 'visible', dy:10, fill: 'black' }} axisLine={{ stroke: 'white' }}  dataKey="name" />
                 
                 <Area type='linear' dataKey="North America" stroke={stroke} strokeWidth={3} fill={`url(#${number})`} />
         </AreaChart>
