@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import { useState, useEffect } from 'react'
 import Dash from "./Dash"
 import { gni, gdp } from "./chartData"
+import Nav from "./Nav"
 
 function App() {
   const api = 'http://127.0.0.1:5000/'
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+     <Nav />
      <BrowserRouter>
      <Routes>
       <Route path='/' element={<Dash />}></Route>

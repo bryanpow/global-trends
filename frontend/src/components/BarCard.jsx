@@ -25,16 +25,16 @@ export function BarCard({series}) {
       };
   return (
     <div>
-         <div   style={{width: '640px', height: '400px', justifySelf: 'flex-start'}} className='flex flex-col mt-0.5 p-5  justify-end cursor-pointer  transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10' >
+         <div   style={{width: '640px', height: '400px', justifySelf: 'flex-start', marginRight: '2px'}} className='flex flex-col mt-0.5 p-5  justify-end cursor-pointer  transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10' >
             <h1 style={{transform: 'translateY(-25px) translateX(29px)'}} className='font-bold text-base'>%CHANGE BY COUNTRY (GDP)</h1>
             <BarChart width={550} height={280} data={data2} className=' flex justify-center   '>
                 <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="rgba(0, 0, 255, 0.8)" stopOpacity={0.5}/>
+                        <stop offset="0%" stopColor="rgba(0, 0, 255, 0.8)" stopOpacity={0.3}/>
                         <stop offset="100%" stopColor="rgba(0, 0, 255, 0.8)" stopOpacity={0.9}/>
                     </linearGradient>
                     <linearGradient id="colorUv2" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="rgba(255, 0, 0, 1)" stopOpacity={0.5}/>
+                        <stop offset="0%" stopColor="rgba(255, 0, 0, 1)" stopOpacity={0.3}/>
                         <stop offset="100%" stopColor="rgba(255, 0, 0, 1)" stopOpacity={0.9}/>
                     </linearGradient>
                     
