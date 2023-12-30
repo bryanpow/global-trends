@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "react-widgets/styles.css";
 :root{
   background-color: #F4FAFF;
   font-family: 'Nunito Sans', sans-serif;

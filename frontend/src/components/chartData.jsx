@@ -4,10 +4,10 @@
 export let data = JSON.parse(window.localStorage.getItem('dataSet'))
 
 //Integers represent the index of series in each region's respective data array
-export const gni = 0
-export const unemployment = 1
-export const gdp = 2
-export const inflation = 3
+export let gni = 0
+export let unemployment = 1
+export let gdp = 2
+export let inflation = 3
  
 export const formatDataForChart = (arr, data, series) => {
     const yearDataMap = {};
@@ -104,7 +104,7 @@ export const unemploymentTotal = {
     'Europe & Central Asia': '-1.57',
     'Latin America & Caribbean': '-2.44%',
     'Middle East & North Africa': '-2.17%',
-    'Sub-Saharan Africa': 1,
+    'Sub-Saharan Africa': 'NO DATA',
     'World': '-0.22%',
     'North America': '-2.33%',
     'South Asia': '-3.26%'
