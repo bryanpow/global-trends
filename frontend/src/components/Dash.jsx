@@ -9,11 +9,11 @@ import AreaCard from "./AreaCard";
 import BarCard from "./BarCard";
 import PieCard from "./PieCard";
 import { useEffect, useState } from "react";
-import { formatForSort } from "./chartData";
-import { region } from "./Nav";
 
-const test = formatForSort(inflationTotal);
-console.log(test);
+import { region } from "./Nav";
+import AOS from 'aos';
+import TopChange from "./TopChange";
+
 
 export function Dash({ scatterStyle, barStyle, textStyle }) {
   const [currentRegion, setCurrentRegion] = useState(region.value);
@@ -39,7 +39,6 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
   
   return (
     <>
-      {/* <h2 style={{marginLeft: '5%', fontSize: '30px'}}>{pageTitle}</h2> */}
 
       <div className="flex gap-5 mt-5  flex-wrap justify-center">
         <AreaCard
@@ -72,47 +71,7 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
         />
         <BarCard />
         <PieCard />
-        <div
-          style={{ width: "308px", hieght: "100px" }}
-          className="flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
-        >
-          <h1
-            style={{ transform: "translateY(-96px) translateX(10px)" }}
-            className="text-base font-bold"
-          >
-            HIGHEST CHANGES (WORLD)
-          </h1>
-          <div style={{ transform: "translateY(30px) translateX(-5px)" }}>
-            <div
-              className="flex pl-2 pt-2 pb-2"
-              style={{
-                transform: "translateX(7px) translateY(-100px)",
-                fontSize: "15px",
-                gap: "68px",
-                background: "#F4FAFF",
-              }}
-            >
-              <p>Region</p> <p></p> % Change
-            </div>
-            {test.map((obj) => {
-              return (
-                <div
-                  className="flex justify-between"
-                  style={{
-                    transform: "translateY(-90px) translateX(8px)",
-                    borderBottom: "1px solid lightgrey",
-                    fontSize: "15px",
-                  }}
-                >
-                  <p className="pl-2" style={{}}>
-                    {obj[0]}
-                  </p>
-                  <p className="pr-3"> {obj[1]}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <TopChange />
       </div>
     </>
   );

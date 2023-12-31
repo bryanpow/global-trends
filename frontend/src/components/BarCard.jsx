@@ -1,4 +1,5 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
+import { signal, effect, useSignal } from "@preact/signals-react";
 import {
   BarChart,
   Bar,
@@ -22,10 +23,11 @@ import {
   gdpTotal,
   gniTotal,
   unemploymentTotal,
+  inflation,
 } from "./chartData";
-const data2 = [];
-formatForBar(data2, gdpTotal);
-export function BarCard({ series }) {
+import { region } from "./Nav";
+import { series } from "./Nav";
+export function BarCard({ chosenSeries }) {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       // Filter out the "Comparison" data from the tooltip
@@ -52,6 +54,24 @@ export function BarCard({ series }) {
 
     return null;
   };
+  const [currentSeries, setCurrentSeries] = useState(series.value)
+  
+  const data2 = [];
+  useEffect(() => {
+    const unsubscribe = series.subscribe((newValue) => {
+      if (newValue === 'GDP') setCurrentSeries(gdpTotal);
+      if (newValue === 'GNI PER')  setCurrentSeries(gniTotal);
+      if (newValue === 'Unemployment') {
+        setCurrentSeries(unemploymentTotal);
+        console.log(unemploymentTotal)
+      }
+      if (newValue === 'Inflation') setCurrentSeries(inflationTotal)
+    });
+    return () => unsubscribe();
+  })
+
+
+  formatForBar(data2, currentSeries, region.value,);
   return (
     <div>
       <div
@@ -67,13 +87,13 @@ export function BarCard({ series }) {
           style={{ transform: "translateY(-25px) translateX(29px)" }}
           className="font-bold text-base"
         >
-          %CHANGE BY COUNTRY (GDP)
+          %CHANGE BY REGION ({series.value})
         </h1>
         <BarChart
           width={550}
           height={280}
           data={data2}
-          className=" flex justify-center   "
+          className=" flex justify-center "
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -115,12 +135,14 @@ export function BarCard({ series }) {
           <YAxis axisLine={false} />
           <XAxis dataKey="name" opacity={0} />
           <Bar
-            dataKey="North America"
+            animationDuration='800'
+            dataKey={region.value}
             fill="url(#colorUv2)"
             shape="circle"
             strokeWidth={3}
           />
           <Bar
+            animationDuration='800'
             dataKey="Comparison"
             fill="url(#colorUv)"
             shape="circle"

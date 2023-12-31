@@ -1,4 +1,5 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
+import { region, series } from "./Nav";
 import {
   BarChart,
   Bar,
@@ -18,7 +19,6 @@ import {
 } from "recharts";
 import {
   formatDataForChart,
-  formatDataForPieChart,
   data,
   gni,
   gdp,
@@ -28,20 +28,39 @@ import {
   gdpTotal,
   gniTotal,
   unemploymentTotal,
+  gdpSplit,
+  gniSplit,
+  unemploymentSplit,
+  inflationSplit,
 } from "./chartData";
 
 
 function PieCard() {
-  let data5 = [];
-  formatDataForPieChart(data5, data, gni);
-  console.log(data5);
+  const [currentSeries, setCurrentSeries] = useState(gdpSplit)
+  useEffect(() => {
+    const unsubscribe = series.subscribe((newValue) => {
+      if (newValue === 'GDP') setCurrentSeries(gdpSplit);
+      if (newValue === 'GNI PER')  setCurrentSeries(gniSplit);
+      if (newValue === 'Unemployment') setCurrentSeries(unemploymentSplit);
+      if (newValue === 'Inflation') setCurrentSeries(inflationSplit)
+    });
+    return () => unsubscribe();
+  })
+
+  ;
+
   return (
+
     <>
       <div
         style={{ width: "308px", hieght: "100px" }}
         className="flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
       >
-        <h1 className="text-center font-bold text-base">PERCENT CHANGE</h1>
+        {series.value.length < 9?
+        <h1 style={{position: 'relative'}} className="text-center font-bold text-base">PERCENT CHANGE ({series.value})</h1>:
+        <h1 style={{position: 'relative'}} className="text-center font-bold text-base">PERCENT CHANGE (UE)</h1>
+        }
+        
         <PieChart
           width={400}
           height={300}
@@ -81,49 +100,69 @@ function PieCard() {
             }}
           />
           <Pie
-            data={data5}
+            animationDuration='800'
+
+            data={currentSeries[region.value]}
             cx="50%"
             cy="50%"
             innerRadius={100}
             outerRadius={135}
             startAngle={-270}
             endAngle={90}
-            dataKey="North America"
+            dataKey={'value'}
           >
-            {data5.map((entry, index) => (
+            {currentSeries[region.value].map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={`url(#${index % 2 === 0 ? "colorUv" : "colorUv2"})`}
               />
             ))}
           </Pie>
-          <text
-            x={"50%"}
-            y={"40%"}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill="grey"
-          >
-            2002-2012
-          </text>
-          <text
-            x={"50%"}
-            y={"50%"}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill="grey"
-          >
-            VS
-          </text>
-          <text
-            x={"50%"}
-            y={"60%"}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill="grey"
-          >
-            2012-2022
-          </text>
+          {
+  region.value === "Sub-Saharan Africa" && series.value.length > 9?
+
+      <text
+        x={"50%"}
+        y={"40%"}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="grey"
+      >
+        NO DATA
+      </text>
+      
+  
+    :
+    <>
+      <text
+        x={"50%"}
+        y={"40%"}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="grey"
+      >
+        2002-2012
+      </text>
+      <text
+        x={"50%"}
+        y={"50%"}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="grey"
+      >
+        VS
+      </text>
+      <text
+        x={"50%"}
+        y={"60%"}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="grey"
+      >
+        2012-2022
+      </text>
+    </>
+}
           <Tooltip />
         </PieChart>
       </div>

@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   AreaChart,
   PieChart,
@@ -17,25 +19,20 @@ import {
 import { formatDataForChart, data, inflation } from "./chartData";
 import { region } from "./Nav";
 
-
 function AreaCard({ number, title, stroke, fill, series }) {
-  const [currentRegion, setCurrentRegion] = useState(region.value);
-  useEffect(() => {
-    const unsubscribe = region.subscribe((newValue) => {
-      setCurrentRegion(newValue);
-    });
-    return () => unsubscribe();
-  }, []);
+  AOS.init();
   let arr = [];
   formatDataForChart(arr, data, series);
   console.log("rendered");
+
+
   return (
     <div>
       <div
         style={{ width: "270px", boxSizing: "content-box" }}
         className="flex flex-col mt-1 p-5  justify-center cursor-pointer  mx-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
       >
-        <h1 style={{ color: "black", fontSize: "30px", fontWeight: "bold" }}>
+        <h1 data-aos='flip-down'  data-aos-duration="900" data-aos-offset="100" data-aos-anchor-placement="top-bottom" key={region.value} style={{ color: "black", fontSize: "30px", fontWeight: "bold" }}>
           {number}
         </h1>
         <h1 style={{ fontSize: "15px", color: "grey" }}>{title}</h1>
@@ -67,8 +64,9 @@ function AreaCard({ number, title, stroke, fill, series }) {
               />
 
               <Area
+                animationDuration='800'
                 type="linear"
-                dataKey={currentRegion}
+                dataKey={region.value}
                 stroke={stroke}
                 strokeWidth={3}
                 fill={`url(#${number})`}

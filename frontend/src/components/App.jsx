@@ -4,7 +4,9 @@ import Dash from "./Dash";
 import { gni, gdp } from "./chartData";
 import Nav from "./Nav";
 
+
 function App() {
+  
   const api = "http://127.0.0.1:5000/";
   useEffect(() => {
     if (!window.localStorage.getItem("dataSet")) {

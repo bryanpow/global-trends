@@ -1,20 +1,24 @@
 import React from "react";
 import { signal, effect, useSignal } from "@preact/signals-react";
 import DropdownList from "react-widgets/DropdownList";
-
+import AOS from 'aos';
+import { gdpTotal } from "./chartData";
 
 
 export const region = signal("North America");
-
+export const series = signal('GDP')
 function Nav() {
-  const handleDropdownChange = (newValue) => {
+  const handleRegionChange = (newValue) => {
     region.value = newValue;
-    console.log(region.value);
   };
+  const handleSeriesChange = (newValue) => {
+    series.value = newValue;
+    console.log(series.value)
+  }
   return (
     <div>
       <div className="flex justify-between relative bg-white pt-2 pb-2">
-        <div className="flex gap-10 pl-10 relative">
+        <div  className="flex gap-10 pl-10 relative">
           <h4 style={{ fontSize: "30px", transform: "translateY(-5px)" }}>☰</h4>
           <h4
             style={{
@@ -54,9 +58,9 @@ function Nav() {
               REGION
             </h1>
             <DropdownList
-              style={{ width: "200px", zIndex: "1000" }}
+              style={{ width: "200px", zIndex: "1000", height:'25px' }}
               defaultValue={"North America"}
-              onChange={handleDropdownChange}
+              onChange={handleRegionChange}
               data={[
                 "World",
                 "North America",
@@ -80,8 +84,9 @@ function Nav() {
               SERIES (R2)
             </h1>
             <DropdownList
-              style={{ width: "200px", zIndex: "100", position: "relative" }}
+              style={{ width: "200px", zIndex: "100",  height:'25px' }}
               defaultValue={"GDP"}
+              onChange={handleSeriesChange}
               data={["GDP", "GNI PER", "Unemployment", "Inflation"]}
             />
           </div>
