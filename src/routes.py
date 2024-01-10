@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, reqparse
 from flask_sqlalchemy import SQLAlchemy
-from src import pandasCalc
+import pandasCalc
 
 
 

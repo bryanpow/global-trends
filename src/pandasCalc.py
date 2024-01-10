@@ -2,10 +2,12 @@ import pandas as pd
 import numpy as np
 import sys
 print(sys.path)
-
+import os
+script_dir = os.path.dirname(__file__)
 
 pd.set_option('display.float_format', '{:.2f}'.format)
-all_data = pd.read_csv('./data/22291f87-6287-4213-a167-2a19414ef55a_Data.csv')
+path = os.path.join(script_dir, 'data', '22291f87-6287-4213-a167-2a19414ef55a_Data.csv')
+all_data = pd.read_csv(path)
 
 
 del all_data['Series Code']
