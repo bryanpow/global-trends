@@ -5,7 +5,7 @@ import { gni, gdp } from "./chartData";
 import Nav from "./Nav";
 
 function App() {
-  const api = "http://127.0.0.1:5000/";
+  const api = "https://global-trends-backend-ee66f588b90d.herokuapp.com/";
   useEffect(() => {
     if (!window.localStorage.getItem("dataSet")) {
       const getData = async () => {
