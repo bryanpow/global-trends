@@ -12,4 +12,4 @@ six
 SQLAlchemy
 Werkzeug
 pandas
-numpy
+

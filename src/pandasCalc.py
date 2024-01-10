@@ -4,7 +4,7 @@ import numpy as np
 
 
 pd.set_option('display.float_format', '{:.2f}'.format)
-all_data = pd.read_csv('/Users/bryan/Projects/finance-app/global-trends/backend/src/data/22291f87-6287-4213-a167-2a19414ef55a_Data.csv')
+all_data = pd.read_csv('./data/22291f87-6287-4213-a167-2a19414ef55a_Data.csv')
 
 
 del all_data['Series Code']
