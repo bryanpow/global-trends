@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-
+import sys
+print(sys.path)
 
 
 pd.set_option('display.float_format', '{:.2f}'.format)
