@@ -57,7 +57,7 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
         />
         <AreaCard
           series={unemployment}
-          number={`${unemploymentTotal[`${currentRegion}`]}`}
+          number={`-${unemploymentTotal[`${currentRegion}`]}%`}
           title="UNEMPLOYMENT"
           stroke="rgba(0, 255, 0, 1)"
           fill="rgba(0, 255, 0, 1)"

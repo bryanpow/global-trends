@@ -33,7 +33,8 @@ import {
   unemploymentSplit,
   inflationSplit,
 } from "./chartData";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function PieCard() {
   const [currentSeries, setCurrentSeries] = useState(gdpSplit)
@@ -44,6 +45,7 @@ function PieCard() {
       if (newValue === 'Unemployment') setCurrentSeries(unemploymentSplit);
       if (newValue === 'Inflation') setCurrentSeries(inflationSplit)
     });
+    AOS.init()
     return () => unsubscribe();
   })
 
@@ -57,7 +59,7 @@ function PieCard() {
         className="flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
       >
         {series.value.length < 9?
-        <h1 style={{position: 'relative'}} className="text-center font-bold text-base">PERCENT CHANGE ({series.value})</h1>:
+        <h1 key={series.value} data-aos='flip=down' style={{position: 'relative'}} className="text-center font-bold text-base">PERCENT CHANGE ({series.value})</h1>:
         <h1 style={{position: 'relative'}} className="text-center font-bold text-base">PERCENT CHANGE (UE)</h1>
         }
         
