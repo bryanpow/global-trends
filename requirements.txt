@@ -11,3 +11,5 @@ pytz
 six
 SQLAlchemy
 Werkzeug
+pandas
+numpy
