@@ -7,3 +7,4 @@ from pandasCalc import json_data
 class Data(Resource):
     def get(self):
         return json_data
+    

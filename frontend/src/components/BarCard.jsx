@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from "react";
-import { signal, effect, useSignal } from "@preact/signals-react";
+
 import {
   BarChart,
   Bar,
