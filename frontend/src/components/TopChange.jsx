@@ -15,7 +15,6 @@ function TopChange() {
       return () => unsubscribe();
     })
   const test = formatForSort(currentSeries);
-  console.log(test);
   return (
     <>
         <div
@@ -42,6 +41,7 @@ function TopChange() {
             
             <div style={{ transform: "translateY(30px) translateX(-5px)" }}>
                 <div
+                
                 className="flex pl-2 pt-2 pb-2"
                 style={{
                     transform: "translateX(7px) translateY(-100px)",

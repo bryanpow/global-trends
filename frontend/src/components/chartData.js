@@ -2,8 +2,6 @@
 
 export const data =   JSON.parse(window.localStorage.getItem("dataSet"));
 
-console.log(data)
-
 //Integers represent the index of series in each region's respective data array
 export let gni = 0;
 export let unemployment = 1;

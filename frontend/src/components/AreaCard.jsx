@@ -23,9 +23,6 @@ function AreaCard({ number, title, stroke, fill, series }) {
   AOS.init();
   let arr = [];
   formatDataForChart(arr, data, series);
-  console.log("rendered");
-
-
   return (
     <div>
       <div
