@@ -28,6 +28,7 @@ import {
 import { region } from "./Nav";
 import { series } from "./Nav";
 export function BarCard({ chosenSeries }) {
+  const [pageReloaded, setIsPageReloaded] = useState()
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       // Filter out the "Comparison" data from the tooltip
@@ -63,13 +64,19 @@ export function BarCard({ chosenSeries }) {
       if (newValue === 'GNI PER')  setCurrentSeries(gniTotal);
       if (newValue === 'Unemployment') {
         setCurrentSeries(unemploymentTotal);
-        console.log(unemploymentTotal)
       }
       if (newValue === 'Inflation') setCurrentSeries(inflationTotal)
     });
     return () => unsubscribe();
   })
-
+  useEffect(() => {
+    if (sessionStorage.getItem('pageReloaded')) {
+      setIsPageReloaded(false);
+    } else {
+      sessionStorage.setItem('pageReloaded', 'true');
+      setIsPageReloaded(true);
+    }
+  }, []);
 
   formatForBar(data2, currentSeries, region.value,);
   return (
@@ -90,6 +97,7 @@ export function BarCard({ chosenSeries }) {
           %CHANGE BY REGION ({series.value})
         </h1>
         <BarChart
+          key={pageReloaded && Math.random()}
           width={550}
           height={280}
           data={data2}
@@ -138,14 +146,15 @@ export function BarCard({ chosenSeries }) {
             animationDuration='800'
             dataKey={region.value}
             fill="url(#colorUv2)"
-            shape="circle"
+            
             strokeWidth={3}
           />
           <Bar
             animationDuration='800'
+            
             dataKey="Comparison"
             fill="url(#colorUv)"
-            shape="circle"
+            
             strokeWidth={3}
           />
         </BarChart>
