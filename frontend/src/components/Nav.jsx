@@ -13,7 +13,6 @@ function Nav() {
   };
   const handleSeriesChange = (newValue) => {
     series.value = newValue;
-    console.log(series.value)
   }
   return (
     <div>
