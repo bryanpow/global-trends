@@ -40,8 +40,9 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
   return (
     <>
 
-      <div className="flex gap-5 mt-5  flex-wrap justify-center">
+      <div style={{marginTop: '50px'}} className="flex gap-5 mt-5  flex-wrap justify-center dash">
         <AreaCard
+          
           series={gdp}
           number={`+${gdpTotal[`${currentRegion}`]}%`}
           title="GLOBAL DOMESTIC PROFIT"
@@ -49,6 +50,7 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
           fill="rgba(0, 0, 255, 1)"
         />
         <AreaCard
+         
           series={gni}
           number={`+${gniTotal[`${currentRegion}`]}%`}
           title="GROSS NATIONAL INCOME PER"
@@ -56,6 +58,7 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
           fill="rgba(255, 255, 0, 1)"
         />
         <AreaCard
+          
           series={unemployment}
           number={`-${unemploymentTotal[`${currentRegion}`]}%`}
           title="UNEMPLOYMENT"
@@ -63,6 +66,7 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
           fill="rgba(0, 255, 0, 1)"
         />
         <AreaCard
+          
           series={inflation}
           number={`+${inflationTotal[`${currentRegion}`]}%`}
           title="INFLATION"

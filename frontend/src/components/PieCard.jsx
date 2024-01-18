@@ -55,8 +55,8 @@ function PieCard() {
 
     <>
       <div
-        style={{ width: "308px", hieght: "100px" }}
-        className="flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
+       
+        className="flex flex-col mt-1 p-5  justify-center cursor-pointer   transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10 pie"
       >
         {series.value.length < 9?
         <h1 key={series.value} data-aos='flip=down' style={{position: 'relative'}} className="text-center font-bold text-base">PERCENT CHANGE ({series.value})</h1>:
@@ -66,7 +66,8 @@ function PieCard() {
         <PieChart
           width={400}
           height={300}
-          style={{ transform: "scale(0.7) translateX(-92px)" }}
+          className="pieIn"
+          
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

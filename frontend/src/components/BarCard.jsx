@@ -36,6 +36,7 @@ export function BarCard({ chosenSeries }) {
 
       return (
         <div
+          
           className="custom-tooltip"
           style={{
             backgroundColor: "#fff",
@@ -82,13 +83,8 @@ export function BarCard({ chosenSeries }) {
   return (
     <div>
       <div
-        style={{
-          width: "640px",
-          height: "400px",
-          justifySelf: "flex-start",
-          marginRight: "2px",
-        }}
-        className="flex flex-col mt-0.5 p-5  justify-end cursor-pointer  transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
+        
+        className="flex flex-col mt-0.5 p-5  justify-end cursor-pointer  transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10 bar"
       >
         <h1
           style={{ transform: "translateY(-25px) translateX(29px)" }}
@@ -96,12 +92,14 @@ export function BarCard({ chosenSeries }) {
         >
           %CHANGE BY REGION ({series.value})
         </h1>
+        <ResponsiveContainer width="100%" className="m-auto">
         <BarChart
+
           key={pageReloaded && Math.random()}
           width={550}
           height={280}
           data={data2}
-          className=" flex justify-center "
+          className=" flex justify-center bar"
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -158,6 +156,7 @@ export function BarCard({ chosenSeries }) {
             strokeWidth={3}
           />
         </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
