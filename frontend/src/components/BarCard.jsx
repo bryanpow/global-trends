@@ -87,18 +87,19 @@ export function BarCard({ chosenSeries }) {
         className="flex flex-col mt-0.5 p-5  justify-end cursor-pointer  transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10 bar"
       >
         <h1
-          style={{ transform: "translateY(-25px) translateX(29px)", marginTop: '28px'   }}
+          style={{ transform: "translateY(-25px) translateX(15px)", marginTop: '28px'   }}
           className="font-bold text-base"
         >
           %CHANGE BY REGION ({series.value})
         </h1>
         <ResponsiveContainer width="100%" className="m-auto">
         <BarChart
-
+        
           key={pageReloaded && Math.random()}
           width={550}
           height={280}
           data={data2}
+          style={{transform: 'translateX(-13px)'}}
           className=" flex justify-center bar"
         >
           <defs>
