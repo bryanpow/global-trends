@@ -40,7 +40,7 @@ export function Dash({ scatterStyle, barStyle, textStyle }) {
   return (
     <>
 
-      <div style={{marginTop: '50px'}} className="flex gap-5 mt-5  flex-wrap justify-center dash">
+      <div style={{marginTop: '30px'}} className="flex gap-5 mt-5  flex-wrap justify-center dash">
         <AreaCard
           
           series={gdp}
