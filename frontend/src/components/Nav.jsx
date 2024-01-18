@@ -15,17 +15,10 @@ function Nav() {
     series.value = newValue;
   }
   return (
-    <div>
-      <div className="flex justify-between relative bg-white pt-2 pb-2">
-        <div  className="flex gap-10 pl-10 relative">
-          <h4 style={{ fontSize: "30px", transform: "translateY(-5px)" }}>☰</h4>
-          <h4
-            style={{
-              fontSize: "25px",
-              fontWeight: "bold",
-              transform: "translateY(2px)",
-            }}
-          >
+    <div style={{ width: '100vw'}}>
+      <div style={{paddingBottom: '15px'}}  className="flex justify-between relative bg-white pt-2 pb-2">
+        <div style={{paddingLeft: '50px'}}  className="flex gap-10 pl-10 relative">
+          <h4 id='navh4' style={{transform: 'translateY(5px)', }}  >
             Economic Trends ('02 - '22)
           </h4>
         </div>
@@ -38,26 +31,22 @@ function Nav() {
           className="flex relative"
         ></div>
         <div
-          style={{
-            gap: "50px",
-            paddingRight: "100px",
-            position: "relative",
-            top: "8.5px",
-          }}
-          className="flex "
+        id='options'
+          
+          className="flex select "
         >
+          <div  className='flex flex-wrap justify-center  m-auto gap-5 move'>
           <div className="flex gap-4 relative">
-            <h1
-              style={{
-                fontSize: "15px",
-                color: "grey",
-                transform: "translateY(2px)",
-              }}
+            <h1 id='rPick'
+             
             >
               REGION
             </h1>
+            <div class='dropPick'>
             <DropdownList
-              style={{ width: "200px", zIndex: "1000", height:'25px' }}
+              id='drr'
+              
+              style={{ width: "200px", zIndex: "1000", height:'25px',   }}
               defaultValue={"North America"}
               onChange={handleRegionChange}
               data={[
@@ -71,23 +60,22 @@ function Nav() {
                 "South Asia",
               ]}
             />
+            </div>
           </div>
           <div className="flex gap-4 ">
-            <h1
-              style={{
-                fontSize: "15px",
-                color: "grey",
-                transform: "translateY(2px)",
-              }}
+            <h1 id='sPick'
+              
             >
               SERIES (R2)
             </h1>
             <DropdownList
-              style={{ width: "200px", zIndex: "100",  height:'25px' }}
+              className='dropPick'
+              style={{ width: "200px", zIndex: "100",  height:'25px',  }}
               defaultValue={"GDP"}
               onChange={handleSeriesChange}
               data={["GDP", "GNI PER", "Unemployment", "Inflation"]}
             />
+          </div>
           </div>
         </div>
       </div>

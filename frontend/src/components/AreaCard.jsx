@@ -26,8 +26,9 @@ function AreaCard({ number, title, stroke, fill, series }) {
   return (
     <div>
       <div
-        style={{ width: "270px", boxSizing: "content-box" }}
-        className="flex flex-col mt-1 p-5  justify-center cursor-pointer  mx-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10"
+
+       
+        className="flex flex-col mt-1 p-5  justify-center cursor-pointer  mx-auto transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl     bg-white   pt-10 area"
       >
         <h1 data-aos='flip-down'  data-aos-duration="900" data-aos-offset="100" data-aos-anchor-placement="top-bottom" key={region.value} style={{ color: "black", fontSize: "30px", fontWeight: "bold" }}>
           {number}
